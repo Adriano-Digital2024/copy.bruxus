@@ -1,0 +1,203 @@
+// Meta OAuth — ETAPA 4: Secure state token (CSRF protection)
+// Fixes: state is now a cryptographically random, single-use, TTL-limited token
+// stored in oauth_states table, NOT the user_id.
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.76.1";
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
+};
+
+function buildCallbackHtml(siteUrl: string, result: 'success' | 'error'): Response {
+  const redirectUrl = `${siteUrl}/dashboard/settings?meta=${result}`;
+  const messageType = result === 'success' ? 'meta-oauth-success' : 'meta-oauth-error';
+  const displayMsg = result === 'success' ? 'Conexão realizada! Fechando...' : 'Erro na conexão. Redirecionando...';
+
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>CopyMonster</title></head>
+<body style="background:#1a1a2e;color:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0">
+<div style="text-align:center"><p>${displayMsg}</p></div>
+<script>
+try{if(window.opener)window.opener.postMessage({type:'${messageType}'},'${siteUrl}');}catch(e){}
+setTimeout(function(){window.close();},500);
+setTimeout(function(){window.location.href='${redirectUrl}';},2000);
+</script></body></html>`;
+
+  return new Response(html, {
+    status: 200,
+    headers: { 'Content-Type': 'text/html; charset=utf-8' },
+  });
+}
+
+serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  try {
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY')!;
+    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const metaAppId = Deno.env.get('META_APP_ID')!;
+    const metaAppSecret = Deno.env.get('META_APP_SECRET')!;
+    const encryptionKey = Deno.env.get('ENCRYPTION_KEY')!;
+    const businessConfigId = Deno.env.get('META_BUSINESS_CONFIG_ID')!;
+    const siteUrl = Deno.env.get('SITE_URL') || 'http://localhost:5173';
+
+    const url = new URL(req.url);
+    const action = url.searchParams.get('action');
+
+    // ── ACTION: authorize — Generate OAuth URL with secure state ──────────
+    if (action === 'authorize') {
+      const authHeader = req.headers.get('Authorization');
+      if (!authHeader?.startsWith('Bearer ')) {
+        return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+      }
+
+      // Verify user JWT
+      const userClient = createClient(supabaseUrl, supabaseAnonKey, {
+        global: { headers: { Authorization: authHeader } }
+      });
+      const token = authHeader.replace('Bearer ', '');
+      const { data: userData, error: userError } = await userClient.auth.getUser(token);
+      if (userError || !userData?.user) {
+        return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+      }
+
+      // Generate cryptographically random state and store it
+      const adminClient = createClient(supabaseUrl, supabaseServiceKey);
+      const { data: stateToken, error: stateError } = await adminClient.rpc('create_oauth_state', {
+        p_user_id: userData.user.id,
+        p_provider: 'meta',
+        p_ttl_seconds: 600, // 10 minutes
+      });
+
+      if (stateError || !stateToken) {
+        console.error('[meta-oauth] Failed to create OAuth state:', stateError);
+        return new Response(JSON.stringify({ error: 'Failed to initiate OAuth' }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+      }
+
+      const redirectUri = `${supabaseUrl}/functions/v1/meta-oauth?action=callback`;
+      const scopes = 'ads_management,ads_read,business_management,pages_show_list,pages_read_engagement,public_profile';
+
+      const oauthUrl = `https://www.facebook.com/v21.0/dialog/oauth?client_id=${metaAppId}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${stateToken}&response_type=code&config_id=${businessConfigId}`;
+
+      return new Response(JSON.stringify({ url: oauthUrl }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
+    }
+
+    // ── ACTION: callback — Validate state, exchange code for token ────────
+    if (action === 'callback') {
+      const code = url.searchParams.get('code');
+      const state = url.searchParams.get('state');
+      const errorParam = url.searchParams.get('error');
+
+      if (errorParam || !code || !state) {
+        console.error(`[meta-oauth] Callback error: ${errorParam || 'missing code/state'}`);
+        return buildCallbackHtml(siteUrl, 'error');
+      }
+
+      // Consume (validate + delete) the state token — single-use
+      const adminClient = createClient(supabaseUrl, supabaseServiceKey);
+      const { data: userId, error: consumeError } = await adminClient.rpc('consume_oauth_state', {
+        p_state: state,
+        p_provider: 'meta',
+      });
+
+      if (consumeError || !userId) {
+        console.error('[meta-oauth] Invalid or expired OAuth state — possible CSRF attack');
+        return buildCallbackHtml(siteUrl, 'error');
+      }
+
+      const redirectUri = `${supabaseUrl}/functions/v1/meta-oauth?action=callback`;
+
+      // Exchange code for token
+      const tokenResponse = await fetch(
+        `https://graph.facebook.com/v21.0/oauth/access_token?client_id=${metaAppId}&redirect_uri=${encodeURIComponent(redirectUri)}&client_secret=${metaAppSecret}&code=${code}`
+      );
+      const tokenData = await tokenResponse.json();
+
+      if (tokenData.error) {
+        console.error(`[meta-oauth] Token exchange failed for user ${userId}`);
+        await adminClient.from('integration_logs').insert({
+          user_id: userId,
+          provider: 'meta',
+          event_type: 'api_error',
+          details: { error: tokenData.error.message, step: 'token_exchange' }
+        });
+        return buildCallbackHtml(siteUrl, 'error');
+      }
+
+      // Exchange short-lived token for long-lived token
+      const longLivedResponse = await fetch(
+        `https://graph.facebook.com/v21.0/oauth/access_token?grant_type=fb_exchange_token&client_id=${metaAppId}&client_secret=${metaAppSecret}&fb_exchange_token=${tokenData.access_token}`
+      );
+      const longLivedData = await longLivedResponse.json();
+      const accessToken = longLivedData.access_token || tokenData.access_token;
+      const expiresIn = longLivedData.expires_in || tokenData.expires_in || 5184000;
+
+      // Get Meta user info
+      const meResponse = await fetch(`https://graph.facebook.com/v21.0/me?fields=id,name&access_token=${accessToken}`);
+      const meData = await meResponse.json();
+
+      // Get ad accounts
+      const adAccountsResponse = await fetch(`https://graph.facebook.com/v21.0/me/adaccounts?fields=id,name&access_token=${accessToken}`);
+      const adAccountsData = await adAccountsResponse.json();
+      const adAccountId = adAccountsData.data?.[0]?.id || null;
+
+      // Get Instagram business account
+      const pagesResponse = await fetch(`https://graph.facebook.com/v21.0/me/accounts?fields=id,instagram_business_account&access_token=${accessToken}`);
+      const pagesData = await pagesResponse.json();
+      const igAccountId = pagesData.data?.[0]?.instagram_business_account?.id || null;
+
+      // Encrypt and store token using service role
+      const { error: upsertError } = await adminClient.rpc('upsert_user_integration' as any, {
+        p_user_id: userId,
+        p_provider: 'meta',
+        p_access_token: accessToken,
+        p_encryption_key: encryptionKey,
+        p_token_expires_at: new Date(Date.now() + expiresIn * 1000).toISOString(),
+        p_meta_user_id: meData.id || null,
+        p_meta_ad_account_id: adAccountId,
+        p_instagram_account_id: igAccountId,
+        p_scopes: ['ads_management', 'ads_read', 'business_management', 'pages_show_list', 'pages_read_engagement', 'public_profile'],
+      });
+
+      if (upsertError) {
+        console.error(`[meta-oauth] Failed to store integration for user ${userId}`);
+        await adminClient.from('integration_logs').insert({
+          user_id: userId,
+          provider: 'meta',
+          event_type: 'api_error',
+          details: { error: upsertError.message, step: 'store_token' }
+        });
+        return buildCallbackHtml(siteUrl, 'error');
+      }
+
+      // Log successful connection
+      await adminClient.from('integration_logs').insert({
+        user_id: userId,
+        provider: 'meta',
+        event_type: 'connected',
+        details: { meta_user_id: meData.id, ad_account_id: adAccountId, ig_account_id: igAccountId }
+      });
+
+      console.log(`[meta-oauth] Successfully connected for user ${userId}`);
+
+      return buildCallbackHtml(siteUrl, 'success');
+    }
+
+    return new Response(JSON.stringify({ error: 'Invalid action' }), {
+      status: 400,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+
+  } catch (error) {
+    console.error('[meta-oauth] Unexpected error:', (error as Error).message);
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+  }
+});

@@ -1,0 +1,256 @@
+{
+  "dashboard": {
+    "menu": {
+      "overview": "Visão Geral",
+      "agents": "Agentes",
+      "positioning": "Posicionamento",
+      "campaigns": "Campanhas",
+      "copyResults": "Minhas Copys",
+      "headlines": "Headlines",
+      "insights": "Insights",
+      "library": "Biblioteca DNA",
+      "billing": "Cobrança",
+      "performance": "Desempenho",
+      "settings": "Configurações",
+      "logout": "Sair"
+    },
+    "welcome": "Bem-vindo de volta",
+    "subtitle": "Pronto para criar textos incríveis? Vamos começar!",
+    "credits": "Créditos",
+    "creditsAvailable": "créditos disponíveis",
+    "plan": "Plano Atual",
+    "upgrade": "Melhorar plano",
+    "level": "Seu Nível",
+    "quickAccess": "Acesso Rápido",
+    "launch": "Iniciar Agente",
+    "recentActivity": "Atividade Recente",
+    "recentActivityDescription": "Aqui está o que você tem trabalhado.",
+    "noActivity": "Nenhuma atividade recente ainda. Comece lançando um agente!",
+    "settings": {
+      "title": "Configurações",
+      "subtitle": "Gerencie sua conta e preferências.",
+      "tabs": {
+        "profile": "Perfil",
+        "preferences": "Preferências",
+        "security": "Segurança",
+        "api": "API",
+        "danger": "Zona de Perigo"
+      },
+      "profile": {
+        "title": "Informações do Perfil",
+        "name": "Nome",
+        "lastName": "Sobrenome",
+        "email": "Email",
+        "phone": "Telefone",
+        "bio": "Biografia",
+        "bioPlaceholder": "Conte-nos um pouco sobre você e seu negócio.",
+        "save": "Salvar Perfil"
+      },
+      "preferences": {
+        "title": "Preferências",
+        "language": "Idioma",
+        "languageDesc": "Escolha seu idioma preferido.",
+        "theme": "Tema",
+        "themeDesc": "Escolha seu tema preferido.",
+        "light": "Claro",
+        "dark": "Escuro",
+        "emailNotifications": "Notificações por Email",
+        "emailNotificationsDesc": "Receba atualizações e novidades.",
+        "browserNotifications": "Notificações do Navegador",
+        "browserNotificationsDesc": "Receba alertas em tempo real.",
+        "save": "Salvar Preferências"
+      },
+      "security": {
+        "title": "Segurança",
+        "currentPassword": "Senha Atual",
+        "newPassword": "Nova Senha",
+        "confirmPassword": "Confirmar Nova Senha",
+        "changePassword": "Alterar Senha",
+        "twoFactor": "Autenticação de Dois Fatores (2FA)",
+        "twoFactorDesc": "Adicione uma camada extra de segurança à sua conta.",
+        "setup2FA": "Configurar 2FA"
+      },
+      "api": {
+        "title": "Acesso à API",
+        "subtitle": "Gerencie suas chaves de API para integrações.",
+        "comingSoon": "Acesso à API em Breve!",
+        "comingSoonDesc": "Integre o CopyMonster com suas ferramentas favoritas."
+      },
+      "danger": {
+        "title": "Zona de Perigo",
+        "subtitle": "Essas ações são irreversíveis.",
+        "deleteAccount": "Excluir Conta",
+        "deleteAccountDesc": "Excluir permanentemente sua conta e todos os dados associados.",
+        "deleteAccountButton": "Excluir Minha Conta"
+      },
+      "toast": {
+        "profileSuccess": "Perfil Salvo!",
+        "profileSuccessDesc": "Suas informações de perfil foram atualizadas.",
+        "preferencesSuccess": "Preferências Salvas!",
+        "preferencesSuccessDesc": "Suas preferências foram atualizadas."
+      }
+    },
+    "billing": {
+      "title": "Cobrança e Planos",
+      "subtitle": "Gerencie sua assinatura e métodos de pagamento.",
+      "currentPlan": "Plano Atual",
+      "creditsRemaining": "créditos restantes",
+      "renewsOn": "Renova em",
+      "mostPopular": "Mais Popular",
+      "processing": "Processando...",
+      "currentPlanButton": "Plano Atual",
+      "discountCode": "Código de Desconto",
+      "discountSubtitle": "Tem um código de desconto? Aplique aqui.",
+      "codeLabel": "Código",
+      "codePlaceholder": "ex.: LAUNCH50",
+      "applyButton": "Aplicar",
+      "transactionHistory": "Histórico de Transações",
+      "noTransactions": "Nenhuma transação ainda.",
+      "toast": {
+        "discountApplied": "Desconto Aplicado!",
+        "discountAppliedDesc": "O desconto {{code}} foi aplicado."
+      }
+    },
+    "agents": {
+      "title": "Agentes de IA",
+      "subtitle": "Selecione um agente para começar a criar.",
+      "launchAgent": "Iniciar Agente"
+    }
+  },
+  "agents": {
+    "title": "Conheça Sua Equipe de Copywriting de IA",
+    "subtitle": "8 Agentes Especializados",
+    "description": "Cada agente é um especialista de classe mundial em seu campo, treinado com milhões de exemplos de copy de alta conversão. Eles estão prontos para criar conteúdo estratégico para o seu negócio.",
+    "list": {
+      "positioner": {
+        "name": "Brand Positioning Monster (DNA)",
+        "description": "Agente de boas-vindas. Cria posicionamento estratégico completo para experts e infoprodutores através de perguntas guiadas."
+      },
+      "vsl": {
+        "name": "VSL Monster",
+        "description": "Criação de scripts de VSL (Video Sales Letter) de alta conversão."
+      },
+      "sales": {
+        "name": "Sales Page Monster",
+        "description": "Desenvolvimento de páginas de vendas otimizadas para conversão."
+      },
+      "launch": {
+        "name": "Launch Monster",
+        "description": "Planejamento e execução de lançamentos estratégicos de produtos."
+      },
+      "email": {
+        "name": "Email Monster",
+        "description": "Criação de sequências de email marketing de alto desempenho."
+      },
+      "ads": {
+        "name": "Ads Monster",
+        "description": "Otimização de anúncios para Meta Ads, Google Ads e outras plataformas."
+      },
+      "headline": {
+        "name": "Headline Monster",
+        "description": "Geração de headlines magnéticas que capturam a atenção instantaneamente."
+      },
+      "short": {
+        "name": "Short Monster",
+        "description": "Scripts para vídeos de 1 minuto que encantam, viralizam e convertem."
+      },
+      "internalLaunch": {
+        "name": "Internal Launch Monster",
+        "description": "Campanha completa de lançamento interno de 7 dias com todos os emails e scripts."
+      },
+      "flashLaunch": {
+        "name": "Flash Launch Monster",
+        "description": "Lançamento relâmpago de 3 dias com urgência máxima e alta conversão."
+      },
+      "evergreenFunnel": {
+        "name": "Evergreen Funnel Monster",
+        "description": "Funil automatizado perpétuo que vende 24/7 sem intervenção."
+      },
+      "webinarCampaign": {
+        "name": "Webinar Campaign Monster",
+        "description": "Campanha completa de webinar com convites, lembretes e pitch de vendas."
+      },
+      "cartRecovery": {
+        "name": "Cart Recovery Monster",
+        "description": "Sequência de recuperação de carrinho abandonado com alta taxa de conversão."
+      },
+      "leadNurture": {
+        "name": "Lead Nurture Monster",
+        "description": "Sequência de nutrição de leads frios até estarem prontos para comprar."
+      },
+      "upsellCross": {
+        "name": "Upsell Cross Monster",
+        "description": "Campanhas de upsell e cross-sell para maximizar valor do cliente."
+      },
+      "listRevival": {
+        "name": "List Revival Monster",
+        "description": "Reativação de lista fria com sequência de reengajamento poderosa."
+      },
+      "fullVslScript": {
+        "name": "Full VSL Script Monster",
+        "description": "Script completo de VSL de alta conversão com estrutura profissional."
+      },
+      "whatsappSales": {
+        "name": "WhatsApp Sales Monster",
+        "description": "Sequências de vendas otimizadas para WhatsApp com templates prontos."
+      }
+    },
+    "badge": {
+      "popular": "Popular",
+      "new": "Novo"
+    },
+    "categories": {
+      "copywriting": "Agentes de Copywriting",
+      "campaign": "Agentes de Campanha Completa",
+      "campaignDescription": "Campanhas prontas para uso imediato com todos os assets inclusos"
+    },
+    "page": {
+      "title": "Agentes de IA",
+      "subtitle": "Selecione um agente para começar a criar.",
+      "launchAgent": "Iniciar Agente",
+      "noAgents": "Nenhum agente disponível no momento."
+    }
+  },
+  "trial": {
+    "expired": {
+      "title": "Seu Período de Teste Expirou",
+      "description": "Seu período de teste gratuito de 7 dias terminou. Faça upgrade para continuar usando todos os agentes de IA."
+    },
+    "noCredits": {
+      "title": "Créditos Esgotados",
+      "description": "Você usou todos os seus créditos disponíveis. Faça upgrade para continuar criando conteúdo."
+    },
+    "upgrade": {
+      "benefits": "O que você ganha com o upgrade:",
+      "benefit1": "Acesso ilimitado a todos os agentes de IA",
+      "benefit2": "Créditos mensais renovados automaticamente",
+      "benefit3": "Suporte prioritário e novas funcionalidades",
+      "button": "Escolher um Plano"
+    }
+  },
+  "copyResults": {
+    "title": "Resultados de Copy",
+    "subtitle": "Veja e gerencie todas as copys geradas",
+    "stats": {
+      "totalCopies": "Total de Copys",
+      "favorites": "Favoritos",
+      "thisMonth": "Este Mês"
+    },
+    "filter": {
+      "all": "Todos",
+      "favorites": "Favoritos"
+    },
+    "toast": {
+      "favorited": "Adicionado aos favoritos",
+      "unfavorited": "Removido dos favoritos",
+      "deleted": "Copy excluída",
+      "copied": "Copiado!",
+      "autoSaved": "Copy salva automaticamente",
+      "autoSaveError": "Erro ao salvar copy"
+    },
+    "empty": {
+      "title": "Nenhuma copy ainda",
+      "description": "As copys geradas pelos agentes aparecerão aqui."
+    }
+  }
+}

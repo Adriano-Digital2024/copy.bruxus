@@ -1,0 +1,251 @@
+{
+  "date": {
+    "locale": "en-US"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "create": "Create",
+    "delete": "Delete",
+    "edit": "Edit",
+    "notFound": "Not Found",
+    "goBack": "Go Back",
+    "back": "Back",
+    "level": "Level",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "testimonials": "Testimonials",
+    "dashboard": "Dashboard",
+    "startTrial": "Start Free Trial"
+  },
+  "hero": {
+    "badge": "Powered by AI & Copywriting Experts",
+    "title": "Your AI Copywriter",
+    "titleHighlight": "That Understands Your Business",
+    "titleEnd": "Deeply",
+    "subtitle": "CopyMonster is the first AI platform that combines your business DNA with specialized agents to create high-converting copy in minutes.",
+    "cta": {
+      "primary": "Start Your 7-Day Free Trial",
+      "secondary": "See How It Works"
+    },
+    "trust": "Trusted by over 1,000 entrepreneurs",
+    "rating": "4.9/5.0 from 200+ reviews",
+    "stats": {
+      "agents": "Specialized Agents",
+      "dna": "Brand DNA"
+    }
+  },
+  "chat": {
+    "insufficientCreditsTitle": "Insufficient Credits",
+    "insufficientCreditsDesc": "You need credits to use this agent. Please upgrade your plan.",
+    "creditUsedTitle": "Credit Used",
+    "creditUsedDesc": "{{credits}} credits remaining",
+    "errorTitle": "Error",
+    "errorDesc": "Failed to get response from AI. Please try again.",
+    "errorMessage": "Error: {{error}}",
+    "exportSuccessTitle": "Exported",
+    "exportSuccessDesc": "Conversation exported successfully",
+    "exportConversation": "Export conversation",
+    "clearHistory": "Clear history",
+    "clearSuccessTitle": "Cleared",
+    "clearSuccessDesc": "Conversation history cleared",
+    "startConversation": "Start a conversation with {{agentName}}",
+    "startConversationDesc": "Type your message below to begin",
+    "inputPlaceholder": "Type your message...",
+    "creditsAvailable": "{{credits}} credits available",
+    "startingGuide": "Starting guided mapping...",
+    "preparingQuestions": "Preparing your strategic questions",
+    "saveMapping": "Save mapping",
+    "rateLimitTitle": "Too many requests",
+    "rateLimitDesc": "Please wait a few seconds before trying again",
+    "tooManyMessagesTitle": "History too long",
+    "tooManyMessagesDesc": "Limit of 50 messages reached. Clear the conversation to continue.",
+    "contentTooLongTitle": "Message too long",
+    "contentTooLongDesc": "Limit of 10,000 characters per message. Shorten and try again.",
+    "welcome": {
+      "vsl_monster": {
+        "title": "Let's Create Your High-Converting VSL",
+        "description": "Tell me about your product/service, target audience, and the transformation you offer. I'll create a persuasive video sales script optimized for conversion."
+      },
+      "sales_page_monster": {
+        "title": "Ready to Create Your Irresistible Sales Page",
+        "description": "Share details about your product, the problems it solves, and your differentiators. I'll structure a complete sales page with headlines, bullets, and high-converting CTAs."
+      },
+      "launch_monster": {
+        "title": "Let's Plan Your Strategic Launch",
+        "description": "Tell me about your product and audience. I'll create a complete launch strategy with email sequences, posts, and scripts that generate anticipation and sales."
+      },
+      "email_monster": {
+        "title": "Time to Create Emails That Convert",
+        "description": "Describe your product, your list, and the campaign goal. I'll create persuasive email marketing sequences that nurture leads and generate sales."
+      },
+      "ads_monster": {
+        "title": "Let's Create High-Performance Ads",
+        "description": "Tell me about your product, audience, and platform (Meta, Google, etc.). I'll create optimized ad copy that stops the scroll and generates clicks."
+      },
+      "headline_monster": {
+        "title": "Ready to Create Magnetic Headlines",
+        "description": "Describe your product and the context of use (email, page, ad). I'll generate multiple irresistible headline options that capture attention instantly."
+      },
+      "short_monster": {
+        "title": "Let's Create Viral Short Video Scripts",
+        "description": "Tell me about your product and main message. I'll create 1-minute scripts optimized for Reels, TikTok, and Shorts that delight and convert."
+      },
+      "internal_launch_monster": {
+        "title": "Complete 7-Day Internal Launch Campaign",
+        "description": "I'll create the entire sequence of emails, posts, and scripts for a 7-day internal launch. Tell me about your product and customer base."
+      },
+      "flash_launch_monster": {
+        "title": "3-Day Flash Launch with Maximum Urgency",
+        "description": "High-pressure flash campaign with all assets. Tell me about your offer and list to create an irresistible 3-day sequence."
+      },
+      "evergreen_funnel_monster": {
+        "title": "Automated Funnel That Sells 24/7",
+        "description": "I'll create a complete evergreen funnel with emails, pages, and automated sequences. Describe your product and sales goal."
+      },
+      "webinar_campaign_monster": {
+        "title": "Complete Webinar Campaign with Sales Pitch",
+        "description": "Complete sequence: invitations, reminders, webinar script, and follow-up. Tell me about your webinar and offer to create everything."
+      },
+      "cart_recovery_monster": {
+        "title": "High-Converting Abandoned Cart Recovery",
+        "description": "I'll create email sequences and messages optimized to recover lost sales. Describe your product and checkout process."
+      },
+      "lead_nurture_monster": {
+        "title": "Nurturing Sequence That Turns Leads into Customers",
+        "description": "I'll create a nurturing sequence that warms cold leads until they're ready to buy. Tell me about your product and audience."
+      },
+      "upsell_cross_monster": {
+        "title": "Maximize Value with Strategic Upsell and Cross-sell",
+        "description": "I'll create post-purchase campaigns that increase average order value. Describe your products and upsell opportunities."
+      },
+      "list_revival_monster": {
+        "title": "Powerful Cold List Reactivation",
+        "description": "I'll create a re-engagement sequence that wakes up inactive leads. Tell me about your list and available offers."
+      },
+      "full_vsl_script_monster": {
+        "title": "Complete Professional VSL Script",
+        "description": "I'll create a complete, structured VSL script for high conversion. Describe your product, main promise, and audience."
+      },
+      "whatsapp_sales_monster": {
+        "title": "Sales Sequences Optimized for WhatsApp",
+        "description": "I'll create persuasive message templates and sequences for WhatsApp sales. Tell me about your product and sales process."
+      },
+      "high_conversion_ads_monster": {
+        "title": "High-Converting Ads with PAS and AIDA Frameworks",
+        "description": "Tell me about your product, audience, and platform. I'll create ads with PAS and AIDA frameworks, value-formula headlines, and irresistible bullets that maximize clicks."
+      },
+      "strategic_stories_monster": {
+        "title": "Stories That Build Authority and Sell",
+        "description": "Tell me about your product and main message. I'll create story sequences that turn simple questions into authority and drive sales with subtle CTAs."
+      },
+      "reels_tiktok_monster": {
+        "title": "Reels & TikTok Scripts That Hook in the First 3 Seconds",
+        "description": "Tell me about your product and message. I'll create scripts with magnetic hooks and retention structures that keep leads watching until the end."
+      },
+      "carousel_monster": {
+        "title": "Persuasive Carousels with 3 to 12 Slides",
+        "description": "Tell me about your product and topic. I'll create a complete carousel with persuasive slide-by-slide structure, visual storytelling, and an irresistible CTA."
+      }
+    }
+  },
+  "positioning": {
+    "welcomeAgent": "Welcome Agent",
+    "guided": "Guided Flow",
+    "subtitle": "Complete mapping in 12 strategic blocks",
+    "blocksCompleted": "blocks",
+    "save": "Save",
+    "saving": "Saving...",
+    "confirmSave": "Save Mapping",
+    "saveDialogTitle": "Save Positioning Mapping",
+    "saveDialogDesc": "You completed {{blocks}} of 12 blocks. Do you want to save this mapping?",
+    "mappingTitle": "Mapping Title",
+    "mappingTitlePlaceholder": "E.g.: My Product Positioning",
+    "saveSuccessTitle": "Mapping Saved!",
+    "saveSuccessDesc": "{{blocks}} blocks were saved successfully.",
+    "saveErrorTitle": "Error Saving",
+    "autoSaveSuccessTitle": "Mapping saved automatically",
+    "autoSaveSuccessDesc": "Your positioning was saved successfully",
+    "completion": {
+      "title": "Strategic Mapping Complete!",
+      "subtitle": "Your brand DNA is ready to use",
+      "description": "You can now download your positioning document or use this mapping to create high-converting copy with our specialized agents.",
+      "viewMapping": "View Mapping",
+      "viewMappingHint": "Download complete document",
+      "createCopys": "Create Copy",
+      "createCopysHint": "Choose next agent",
+      "contextNote": "Your mapping context will be automatically passed to the next agent."
+    },
+    "selectNextAgent": "Create Copy with your Positioning",
+    "selectNextAgentDesc": "Choose a specialized agent to create your campaign",
+    "contextWillBeShared": "Your strategic mapping will be automatically shared with the chosen agent",
+    "exportDocument": "Strategic Mapping",
+    "exportDocumentDesc": "Professional document ready to use",
+    "cleanFormat": "Clean format",
+    "copiedTitle": "Copied!",
+    "copiedDesc": "Document copied to clipboard",
+    "copyErrorTitle": "Error copying",
+    "copyErrorDesc": "Could not copy the document",
+    "downloadedTitle": "Download Started",
+    "downloadedDesc": "Your document has been downloaded",
+    "copied": "Copied!",
+    "copyDocument": "Copy Text",
+    "downloading": "Downloading...",
+    "downloadDocument": "Download Document",
+    "welcome": {
+      "title": "Your Strategic Positioning Journey Starts Here",
+      "description": "I'll guide you through 12 essential blocks to create your complete brand positioning. One question at a time, we'll build your strategic foundation."
+    }
+  },
+  "trial": {
+    "expired": {
+      "title": "Free Trial Ended",
+      "description": "Your 7-day free trial has expired. Choose a plan to continue using the agents."
+    },
+    "noCredits": {
+      "title": "Credits Depleted",
+      "description": "You have no credits remaining. Upgrade your plan to continue."
+    },
+    "upgrade": {
+      "benefits": "With a paid plan you get:",
+      "benefit1": "Unlimited access to all agents",
+      "benefit2": "Monthly credits auto-renewed",
+      "benefit3": "Priority support",
+      "button": "Choose a Plan"
+    }
+  },
+  "agents": {
+    "positioningContextLoaded": "Positioning context loaded",
+    "categories": {
+      "copywriting": "Copywriting Agents",
+      "campaign": "Complete Campaign Agents",
+      "campaignDesc": "Ready-to-use campaigns with all assets included"
+    },
+    "badge": {
+      "new": "New"
+    }
+  },
+  "chatLanding": {
+    "headline": "Create High-Converting Copy in Seconds with AI",
+    "subheadline": "The AI writing assistant built for experts, mentors, and infoproduct creators who want to grow audience and sales faster.",
+    "trustText": "Used by digital creators, experts, and online businesses to generate high-converting content with AI.",
+    "prompts": {
+      "salesPage": "Write a high-converting sales page...",
+      "instagram": "Create an Instagram post that attracts clients...",
+      "adCopy": "Generate ad copy for my online course...",
+      "emailSequence": "Write an email sequence for a product launch..."
+    },
+    "tags": {
+      "salesPages": "Sales Pages",
+      "adCopy": "Ad Copy",
+      "instagramContent": "Instagram Content",
+      "launchScripts": "Launch Scripts",
+      "emailSequences": "Email Sequences"
+    }
+  }
+}
